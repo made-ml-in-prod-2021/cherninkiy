@@ -1,0 +1,6 @@
+# @package _group_
+dataset: ronitf/heart-disease-uci
+url: https://www.kaggle.com/ronitf/heart-disease-uci
+data_dir: data/raw
+data_path: data/raw/heart.csv
+train_size: 0.7

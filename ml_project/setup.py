@@ -4,7 +4,7 @@ setup(
     name='src',
     packages=find_packages(),
     version='0.1.0',
-    description='ML in production course practice',
+    description='Homework 1',
     author='Dmitry Chеrnikоv, MADE-ML-22',
     license='MIT',
 )

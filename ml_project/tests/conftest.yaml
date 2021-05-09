@@ -1,0 +1,30 @@
+data:
+  data_path: data/raw/heart.csv
+  train_size: 0.7
+features:
+  target_col: target
+  categorical_feats:
+  - sex
+  - cp
+  - fbs
+  - restecg
+  - exang
+  - slope
+  - thal
+  numerical_feats:
+  - age
+  - trestbps
+  - chol
+  - thalach
+  - oldpeak
+  - ca
+  normalize_numerical: True
+logreg:
+  model: LogisticRegression
+  path: models/logreg.pkl
+  kwargs:
+    max_iter: 1000
+ranfor:
+  model: RandomForestClassifier
+  path: models/ranfor.pkl
+  kwargs: {}
