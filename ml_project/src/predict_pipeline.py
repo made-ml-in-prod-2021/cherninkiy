@@ -38,10 +38,11 @@ def predict_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
     logger.info("Model predicting...")
 
     preds = make_preds(model, X)
+    df['desease'] = preds
 
     logger.info("Pipeline is done")
 
-    return preds
+    return df
 
 
 if __name__ == "__main__":
