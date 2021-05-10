@@ -14,7 +14,7 @@ ML in production course practice
 
 Предсказание по обученной модели:
 
-    python run_pipeline.py predict configs/predict_config.yml
+    python run_pipeline.py predict conf/predict_config.yml
 
 Запуск тестов:
 
