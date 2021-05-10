@@ -37,7 +37,7 @@ def train(config: str) -> NoReturn:
 @click.argument('config')
 def predict(config: str) -> NoReturn:
     params = load_conf(config)
-    predict_pipeline(params)
+    print(predict_pipeline(params))
 
 
 if __name__ == "__main__":
