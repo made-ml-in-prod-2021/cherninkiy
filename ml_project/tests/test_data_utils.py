@@ -1,10 +1,10 @@
 import pandas as pd
-from omegaconf import OmegaConf
 
 from src.data.utils import read_dataset, split_dataset
+from src.entities.data_params import DataParams
 
 
-def test_read_dataset(params: OmegaConf):
+def test_read_dataset(params: DataParams):
 
     df = read_dataset(params.data.data_path)
 
@@ -12,7 +12,7 @@ def test_read_dataset(params: OmegaConf):
     assert (303, 14) == df.shape
 
 
-def test_split_dataset(params: OmegaConf):
+def test_split_dataset(params: DataParams):
 
     df = read_dataset(params.data.data_path)
 

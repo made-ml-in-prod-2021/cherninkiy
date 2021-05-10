@@ -9,10 +9,12 @@ from sklearn.pipeline import Pipeline
 from sklearn.exceptions import NotFittedError
 from omegaconf import OmegaConf
 
+from src.entities.feature_params import FeatureParams
+
 
 class FeatureBuilder(BaseEstimator, TransformerMixin):
     """ Class that incapsulates feature building logic. """
-    def __init__(self, params: OmegaConf):
+    def __init__(self, params: FeatureParams):
         self.params = params
         self.fitted = False
         self.pipeline = None
@@ -78,7 +80,7 @@ class FeatureBuilder(BaseEstimator, TransformerMixin):
 
 class TargetBuilder(BaseEstimator, TransformerMixin):
     """ Class that incapsulates target building logic. """
-    def __init__(self, params: OmegaConf):
+    def __init__(self, params: FeatureParams):
         self.target_col = params.target_col
 
 

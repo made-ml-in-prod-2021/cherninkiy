@@ -1,16 +1,15 @@
 import numpy as np
 import pandas as pd
 from typing import Union
-from omegaconf import OmegaConf
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+
+from src.entities.model_params import ModelParams
 
 
 ClassifierModel = Union[LogisticRegression, RandomForestClassifier]
 
-def build_model(
-        params: OmegaConf
-    ) -> pd.DataFrame:
+def build_model(params: ModelParams) -> pd.DataFrame:
     """
     Model builder.
     params: OmegaConf
@@ -27,7 +26,7 @@ def build_model(
 def train_model(
             features: np.array,
             target: np.array,
-            params: OmegaConf,
+            params: ModelParams,
     ) -> ClassifierModel:
     """
     Model training.

@@ -14,12 +14,12 @@ from src.data.utils import read_dataset, split_dataset
 from src.features.build_features import FeatureBuilder, TargetBuilder
 from src.models.train_model import train_model
 from src.models.predict_model import make_preds, eval_model
-from src.entities.model_params import ModelParams
+from src.entities.pipeline_params import PipelineParams
 
 logger = logging.getLogger("ml_project/predict_pipeline")
 
 @hydra.main(config_path="../conf", config_name="pipeline")
-def predict_pipeline(pipeline_params: ModelParams) -> Dict[str, float]:
+def predict_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
 
     logger.info(f"Predict pipeline {pipeline_params.model}")
 
