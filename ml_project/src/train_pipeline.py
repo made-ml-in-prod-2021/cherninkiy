@@ -32,8 +32,8 @@ def train_pipeline(pipeline_params: OmegaConf) -> Dict[str, float]:
 
     logger.info("Feature building...")
 
-    feature_builder = FeatureBuilder(pipeline_params.feats)
-    target_builder = TargetBuilder(pipeline_params.feats)
+    feature_builder = FeatureBuilder(pipeline_params.features)
+    target_builder = TargetBuilder(pipeline_params.features)
 
     X_train = feature_builder.fit_transform(train)
     y_train = target_builder.fit_transform(train)

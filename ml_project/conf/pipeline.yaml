@@ -1,5 +1,5 @@
 defaults:
   - data: data
-  - feats: feats
+  - features: features
   - model: logreg
  

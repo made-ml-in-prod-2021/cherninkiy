@@ -29,7 +29,7 @@ def predict_pipeline(pipeline_params: ModelParams) -> Dict[str, float]:
 
     logger.info("Feature building...")
 
-    X = FeatureBuilder(pipeline_params.feats).fit_transform(df)
+    X = FeatureBuilder(pipeline_params.features).fit_transform(df)
 
     logger.info("Model loading...")
 
@@ -45,4 +45,4 @@ def predict_pipeline(pipeline_params: ModelParams) -> Dict[str, float]:
 
 
 if __name__ == "__main__":
-    train_pipeline()
+    predict_pipeline()

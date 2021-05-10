@@ -46,6 +46,6 @@ def test_data() -> Tuple[np.array, np.array]:
 
 @pytest.fixture(scope="session")
 def pipeline_params():
-    with initialize(config_path="../conf"):
+    with initialize(config_path="../tests"):
         conf = compose(config_name="pipeline")
     return conf
