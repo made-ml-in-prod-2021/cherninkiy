@@ -1,15 +1,16 @@
+import logging
 import numpy as np
 import pandas as pd
-from logging import Logger
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.exceptions import NotFittedError
-from omegaconf import OmegaConf
 
 from src.entities.feature_params import FeatureParams
+
+logger = logging.getLogger("ml_project/train_pipeline")
 
 
 class FeatureBuilder(BaseEstimator, TransformerMixin):
@@ -54,6 +55,9 @@ class FeatureBuilder(BaseEstimator, TransformerMixin):
                     ("numerical_pipeline",  self.build_numerical_pipeline(), numerical_feats),
                 ]
             )
+
+            logger.info("FeatureBuilder pipline (normilized) fitting")
+
         else:
             self.pipeline = ColumnTransformer(
                 [
@@ -61,6 +65,9 @@ class FeatureBuilder(BaseEstimator, TransformerMixin):
                     ("numerical_scaled_pipeline",  self.build_numerical_scaled_pipeline(), numerical_feats),
                 ]
             )
+
+            logger.info("FeatureBuilder pipline fitting")
+
         self.pipeline.fit(X)
         self.fitted = True
         return self
@@ -70,7 +77,11 @@ class FeatureBuilder(BaseEstimator, TransformerMixin):
         self.check_is_fitted()
         if X.empty:
             return pd.DataFrame([])
-        return self.pipeline.transform(X)
+        res = self.pipeline.transform(X)
+
+        logger.info("FeatureBuilder pipline transforming")
+
+        return res
 
 
     def fit_transform(self, X: pd.DataFrame) -> np.array:

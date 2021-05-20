@@ -1,6 +1,4 @@
-import pytest
 import numpy as np
-import pandas as pd
 from typing import NoReturn, Tuple
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
@@ -9,6 +7,7 @@ from sklearn.utils.validation import check_is_fitted
 from src.models.train_model import build_model, train_model
 from src.models.predict_model import make_preds, eval_model
 from src.entities.model_params import ModelParams
+
 
 def test_logistic_regression_preds(
         params: ModelParams,

@@ -1,13 +1,14 @@
 import numpy as np
 import pandas as pd
+import logging
 from typing import Dict, Union
-from omegaconf import OmegaConf
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score, accuracy_score, f1_score
 
-
 ClassifierModel = Union[LogisticRegression, RandomForestClassifier]
+logger = logging.getLogger("ml_project/train_pipeline")
+
 
 def make_preds(
         model: ClassifierModel,

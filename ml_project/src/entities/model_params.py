@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field, MISSING
+from dataclasses import dataclass, field
 from typing import Dict, Optional
 
 

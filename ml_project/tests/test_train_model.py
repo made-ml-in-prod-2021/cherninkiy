@@ -1,6 +1,4 @@
-import pytest
 import numpy as np
-import pandas as pd
 from typing import NoReturn, Tuple
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier

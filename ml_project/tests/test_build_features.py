@@ -1,10 +1,9 @@
-import pytest
 import numpy as np
-import pandas as pd
 
 from src.data.utils import read_dataset
 from src.features.build_features import FeatureBuilder, TargetBuilder
 from src.entities.feature_params import FeatureParams
+
 
 def test_feature_builder(params: FeatureParams):
 

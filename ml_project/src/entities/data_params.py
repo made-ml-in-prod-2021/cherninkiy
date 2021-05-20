@@ -1,3 +1,4 @@
+from typing import Optional
 from dataclasses import dataclass, MISSING
 
 
@@ -6,4 +7,4 @@ class DataParams:
     dataset: str = MISSING
     url: str = MISSING
     data_path: str = MISSING
-    train_size: float = 0.7
+    train_size: Optional[float] = 0.7

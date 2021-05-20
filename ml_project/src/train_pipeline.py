@@ -1,14 +1,7 @@
-import os
-import logging.config
-import numpy as np
-import pandas as pd
-from typing import Union, Dict
+from typing import Dict
+import logging
 import joblib
 import hydra
-from omegaconf import OmegaConf
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import f1_score
 
 from src.data.utils import read_dataset, split_dataset
 from src.features.build_features import FeatureBuilder, TargetBuilder
@@ -18,11 +11,11 @@ from src.entities.pipeline_params import PipelineParams
 
 logger = logging.getLogger("ml_project/train_pipeline")
 
+
 @hydra.main(config_path="../conf", config_name="pipeline")
 def train_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
 
     logger.info(f"Train pipeline {pipeline_params.model}")
-
     logger.info(f"Dataset loading ...")
 
     df = read_dataset(pipeline_params.data.data_path)
@@ -45,7 +38,7 @@ def train_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
 
     model = train_model(X_train, y_train, pipeline_params.model)
 
-    logger.info("Model evaluationg...")
+    logger.info("Model evaluating...")
 
     preds = make_preds(model, X_test)
     metrics = eval_model(preds, y_test)
@@ -55,7 +48,7 @@ def train_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
 
     joblib.dump(model, pipeline_params.model.path)
 
-    logger.info("Model saved into {pipeline_params.model.path}")
+    logger.info(f"Model saved into {pipeline_params.model.path}")
 
     return metrics
 

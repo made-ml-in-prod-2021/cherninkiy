@@ -10,7 +10,7 @@ def read_dataset(
     Read csv data from file.
     Parameters
     ----------
-    path: str
+    data_path: str
         Path to dataset csv file.
     """
     data = pd.read_csv(data_path)
@@ -19,7 +19,7 @@ def read_dataset(
 
 def split_dataset(
             data: pd.DataFrame,
-            train_size: int = 0.7,
+            train_size: float = 0.7,
             random_state: int = None,
     ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -28,8 +28,10 @@ def split_dataset(
     ----------
     data: pd.DataFrame
         Dataset to split.
-    params: OmegaConf
-        Model params.
+    train_size: float
+        Size of training part.
+    random_state: int
+        Random state seed.
     """
     train, test = train_test_split(
             data,
