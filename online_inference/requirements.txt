@@ -7,6 +7,6 @@ joblib==0.17.0
 numpy==1.20.1
 hydra_core==1.0.6
 omegaconf==2.0.6
-dataclasses==0.8
 fastapi==0.63
 scikit_learn==0.24.2
+dataclasses

@@ -4,7 +4,7 @@ import requests
 import pandas as pd
 
 DATA_PATH = "data/test.csv"
-PREDICTOR_HOST = os.environ.get("HOST", default="0.0.0.0")
+PREDICTOR_HOST = os.environ.get("HOST", default="172.17.0.2")
 PREDICTOR_PORT = os.environ.get("PORT", default=8080)
 
 
