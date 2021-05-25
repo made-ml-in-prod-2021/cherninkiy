@@ -1,4 +1,4 @@
-ml_project
+online_inference
 ==============================
 
 REST-сервис предсказания болезней сердца по базе признаков Cleveland Clinic.
@@ -40,62 +40,63 @@ API предсказателя:
 
 
 Структура проекта
-├── LICENSE
-├── Makefile               <- Makefile with commands like `make data` or `make train`
-├── README.md              <- The top-level README for developers using this project
-│
-├── conf
-│   ├── data
-│   |   └── data.yaml      <- Data configuration
-│   |
-│   ├── features
-│   |   └── features.yaml  <- Features configuration
-│   │
-│   ├── model
-│   |   └── model.yaml     <- Model configuration
-│   │
-│   └── pipeline.yaml       <- Pipline configuration
-│
-├── data
-│   └── test.csv           <- Testing data
-│
-├── docs                   <- A default Sphinx project; see sphinx-doc.org for details
-│
-├── models
-│   ├── logreg.pkl         <- Logistic regression model
-│   ├── ranfor.pkl         <- Random forest model
-│   └── transformer.pkl    <- Feature builder
-│
-├── requirements.txt       <- The requirements file for reproducing the analysis environment
-│
-├── setup.py               <- Make this project pip installable with `pip install -e`
-|
-├── src                    <- Source code for use in this project
-│   ├── __init__.py        <- Makes src a Python module
-│   ├── data               <- Scripts to download or generate data
-│   │   └── utils.py
-│   │
-│   ├── entities           <- Entities classes.
-│   │   ├── app_params.py
-│   │   ├── data_params.py
-│   │   ├── feature_params.py
-│   │   ├── model_params.py
-│   │   └── pipline_params.py
-│   │
-│   ├── features           <- Scripts to turn raw data into features for modeling
-│   │   └── build_features.py
-│   │
-│   ├── models             <- Scripts to train models and then use trained models to make predictions
-│   │   ├── predict_model.py
-│   │   └── train_model.py
-│   │
-│   └── train_pipeline.py  <- Scripts to make train pipline
-│
-├── tests                  <- Pytest scripts
-│   └── test_app.py
-│
-├── app.py                 <- REST-service script
-│
-├── app_request.py         <- Request script
-│
-└── tox.ini                <- tox file with settings for running tox; see tox.readthedocs.io
+
+    ├── LICENSE
+    ├── Makefile               <- Makefile with commands like `make data` or `make train`
+    ├── README.md              <- The top-level README for developers using this project
+    │
+    ├── conf
+    │   ├── data
+    │   |   └── data.yaml      <- Data configuration
+    │   |
+    │   ├── features
+    │   |   └── features.yaml  <- Features configuration
+    │   │
+    │   ├── model
+    │   |   └── model.yaml     <- Model configuration
+    │   │
+    │   └── pipeline.yaml       <- Pipline configuration
+    │
+    ├── data
+    │   └── test.csv           <- Testing data
+    │
+    ├── docs                   <- A default Sphinx project; see sphinx-doc.org for details
+    │
+    ├── models
+    │   ├── logreg.pkl         <- Logistic regression model
+    │   ├── ranfor.pkl         <- Random forest model
+    │   └── transformer.pkl    <- Feature builder
+    │
+    ├── requirements.txt       <- The requirements file for reproducing the analysis environment
+    │
+    ├── setup.py               <- Make this project pip installable with `pip install -e`
+    |
+    ├── src                    <- Source code for use in this project
+    │   ├── __init__.py        <- Makes src a Python module
+    │   ├── data               <- Scripts to download or generate data
+    │   │   └── utils.py
+    │   │
+    │   ├── entities           <- Entities classes.
+    │   │   ├── app_params.py
+    │   │   ├── data_params.py
+    │   │   ├── feature_params.py
+    │   │   ├── model_params.py
+    │   │   └── pipline_params.py
+    │   │
+    │   ├── features           <- Scripts to turn raw data into features for modeling
+    │   │   └── build_features.py
+    │   │
+    │   ├── models             <- Scripts to train models and then use trained models to make predictions
+    │   │   ├── predict_model.py
+    │   │   └── train_model.py
+    │   │
+    │   └── train_pipeline.py  <- Scripts to make train pipline
+    │
+    ├── tests                  <- Pytest scripts
+    │   └── test_app.py
+    │
+    ├── app.py                 <- REST-service script
+    │
+    ├── app_request.py         <- Request script
+    │
+    └── tox.ini                <- tox file with settings for running tox; see tox.readthedocs.io
