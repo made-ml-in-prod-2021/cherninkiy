@@ -1,4 +1,4 @@
-from dataclasses import dataclass, MISSING
+from dataclasses import dataclass
 from typing import List, Optional
 
 
@@ -8,3 +8,4 @@ class FeatureParams:
     numerical_features: List[str]
     target_col: Optional[str]
     normalize_numerical: bool = True
+    transformer_path: Optional[str] = "models/transformer.pkl"

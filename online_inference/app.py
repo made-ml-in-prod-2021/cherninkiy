@@ -2,50 +2,77 @@ import os
 import joblib
 import logging
 import uvicorn
-import hydra
 import pandas as pd
-from typing import Optional, List, Union
+from typing import Optional, List, NoReturn
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field, ValidationError
 
 from src.entities.app_params import RequestData, ResponseData
-from src.features.build_features import FeatureBuilder
-from src.entities.pipeline_params import PipelineParams
 
-ClassifierModel = Union[LogisticRegression, RandomForestClassifier]
 
+PREDICTOR_HOST = os.environ.get("HOST", default="0.0.0.0")
+PREDICTOR_PORT = os.environ.get("PORT", default=8080)
 
 logger = logging.getLogger(__name__)
-model: Optional[ClassifierModel] = None
-transformer: Optional[FeatureBuilder] = None
+model: Optional[Pipeline] = None
 app = FastAPI()
 
 
-@hydra.main(config_path="../conf", config_name="pipeline")
-def load_model(pipeline_params: PipelineParams):
-    model_path = os.getenv("PATH_TO_MODEL", default="models/logreg.pkl")
-    if model_path is None:
-        err = f"PATH_TO_MODEL {model_path} is None"
+def load_model() -> NoReturn:
+    global model
+
+    classifier_path = os.getenv(
+        "CLASSIFIER_PATH",
+        default="models/logreg.pkl")
+    if classifier_path is None:
+        err = f"variable not set: CLASSIFIER_PATH"
         logger.error(err)
         raise RuntimeError(err)
 
-    logger.info("Model loading...")
-    model = joblib.load(pipeline_params.model.path)
-    logger.info("Model predicting...")
+    transformer_path = os.getenv(
+        "TRANSFORMER_PATH",
+        default="models/transformer.pkl")
+    if transformer_path is None:
+        err = f"variable not set: PATH_TO_TRANSFORMER"
+        logger.error(err)
+        raise RuntimeError(err)
 
-    transformer = FeatureBuilder(pipeline_params.features)
+    logger.info(f"Classifier found: {classifier_path}")
+
+    classifier = joblib.load(classifier_path)
+
+    logger.info("Classifier loaded")
+
+    logger.info(f"Transformer found: {transformer_path}")
+
+    transformer = joblib.load(transformer_path)
+
+    logger.info("Transformer loaded")
+
+    model = Pipeline([
+        ('transformer', transformer),
+        ('classifier', classifier)
+    ])
+
+    logger.info("Pipeline created")
+
 
 
 def make_preds(
-    pipeline_params: PipelineParams,
     data: List[RequestData], pipeline: Pipeline) -> List[ResponseData]:
     df = pd.DataFrame(x.__dict__ for x in data)
-    X = transformer.fit_transform(df)
-    ids = [int(x) for x in data.id]
-    predicts = pipeline.predict(data.drop("id", axis=1))
+
+    # correct features order
+    columns = [
+        'age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg',
+        'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal'
+    ]
+
+    df = df[columns]
+    df['target'] = None
+
+    ids = list(range(len(data)))
+    predicts = model.predict(df)
 
     return [
         ResponseData(id=id_, target=int(target_))
@@ -60,18 +87,22 @@ def main():
 
 @app.on_event("startup")
 def startup():
+    logger.info("Starting service...")
     load_model()
 
 
 @app.get("/status")
 def status() -> bool:
-    return f"Pipeline is ready: {model is not None}."
+    if model is not None:
+        return "Predictor is ready"
+    return "Predictor not ready"
 
 
 @app.api_route("/predict", response_model=List[ResponseData], methods=["GET", "POST"])
 def predict(request: List[RequestData]):
+    global model
     return make_preds(request, model)
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=os.getenv("PORT", 8000))
+    uvicorn.run("app:app", host=PREDICTOR_HOST, port=os.getenv("PORT", PREDICTOR_PORT))
