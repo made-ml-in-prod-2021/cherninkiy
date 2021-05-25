@@ -18,7 +18,7 @@ ml_project
 
 Обучение модели:
 
-    python run_pipeline.py train conf/pipelene.yml
+    python run_pipeline.py train conf/pipeline.yml
 
 Предсказание по обученной модели:
 
@@ -66,7 +66,7 @@ ml_project
 │   ├── model
 │   |   └── model.yaml     <- Model configuration
 │   │
-│   └── pipline.yaml       <- Pipline configuration
+│   └── pipeline.yaml       <- Pipline configuration
 │
 ├── data
 │   └── raw                <- The original, immutable data dump

@@ -28,3 +28,6 @@ ranfor:
   model: RandomForestClassifier
   path: models/ranfor.pkl
   kwargs: {}
+synthetic:
+  batch_size: 32
+  random_state: 42

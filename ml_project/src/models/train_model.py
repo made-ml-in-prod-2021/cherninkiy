@@ -1,6 +1,5 @@
 import logging
 import numpy as np
-import pandas as pd
 from typing import Union
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
@@ -11,10 +10,10 @@ ClassifierModel = Union[LogisticRegression, RandomForestClassifier]
 logger = logging.getLogger("ml_project/train_pipeline")
 
 
-def build_model(params: ModelParams) -> pd.DataFrame:
+def build_model(params: ModelParams) -> ClassifierModel:
     """
     Model builder.
-    params: OmegaConf
+    params: ModelParams
         Model params.
     """
     if params.model == "LogisticRegression":
@@ -36,7 +35,7 @@ def train_model(
     Model training.
     features: np.array
     target: np.array
-    params: OmegaConf
+    params: ModelParams
         Model params.
     """
     model = build_model(params)

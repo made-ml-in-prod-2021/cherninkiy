@@ -33,7 +33,7 @@ def test_random_forest_build(params: ModelParams) -> NoReturn:
 def test_random_forest_train(
         params: ModelParams,
         train_data: Tuple[np.array, np.array]
-    ) -> NoReturn:
+) -> NoReturn:
 
     model = train_model(train_data[0], train_data[1], params.ranfor)
     check_is_fitted(model)

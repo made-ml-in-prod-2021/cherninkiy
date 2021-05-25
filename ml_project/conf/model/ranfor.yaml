@@ -1,4 +1,4 @@
 # @package _group_
 model: RandomForestClassifier
-path: ../../../models/ranfor.pkl
+path: models/ranfor.pkl
 kwargs: {}

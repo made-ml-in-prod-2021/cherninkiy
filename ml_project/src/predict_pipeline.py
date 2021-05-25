@@ -2,6 +2,7 @@ from typing import Dict
 import logging.config
 import joblib
 import hydra
+import numpy as np
 
 from src.data.utils import read_dataset, split_dataset
 from src.features.build_features import FeatureBuilder, TargetBuilder
@@ -12,7 +13,7 @@ logger = logging.getLogger("ml_project/predict_pipeline")
 
 
 @hydra.main(config_path="../conf", config_name="pipeline")
-def predict_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
+def predict_pipeline(pipeline_params: PipelineParams) -> np.array:
 
     logger.info(f"Predict pipeline {pipeline_params.model}")
     logger.info(f"Dataset loading ...")
