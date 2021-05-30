@@ -1,8 +1,8 @@
 import numpy as np
 
-from src.data.utils import read_dataset
-from src.features.build_features import FeatureBuilder, TargetBuilder
-from src.entities.feature_params import FeatureParams
+from ..src.data.utils import read_dataset
+from ..src.features.build_features import FeatureBuilder, TargetBuilder
+from ..src.entities.feature_params import FeatureParams
 
 
 def test_feature_builder(params: FeatureParams):

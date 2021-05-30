@@ -1,18 +1,17 @@
-from typing import Dict
 import logging.config
 import joblib
 import hydra
 import numpy as np
 
-from src.data.utils import read_dataset, split_dataset
-from src.features.build_features import FeatureBuilder, TargetBuilder
-from src.models.predict_model import make_preds, eval_model
-from src.entities.pipeline_params import PipelineParams
+from .data.utils import read_dataset
+from .features.build_features import FeatureBuilder
+from .models.predict_model import make_preds
+from .entities.pipeline_params import PipelineParams
 
 logger = logging.getLogger("ml_project/predict_pipeline")
 
 
-@hydra.main(config_path="../conf", config_name="pipeline")
+@hydra.main(config_path="../../conf", config_name="pipeline")
 def predict_pipeline(pipeline_params: PipelineParams) -> np.array:
 
     logger.info(f"Predict pipeline {pipeline_params.model}")

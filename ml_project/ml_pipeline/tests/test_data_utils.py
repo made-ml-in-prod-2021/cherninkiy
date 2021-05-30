@@ -1,7 +1,7 @@
 import pandas as pd
 
-from src.data.utils import read_dataset, split_dataset
-from src.entities.data_params import DataParams
+from ..src.data.utils import read_dataset, split_dataset
+from ..src.entities.data_params import DataParams
 
 
 def test_read_dataset(params: DataParams):

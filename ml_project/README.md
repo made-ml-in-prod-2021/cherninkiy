@@ -54,71 +54,77 @@ ml_project
 Структура проекта
 
 	├── LICENSE
-	├── Makefile               <- Makefile with commands like `make data` or `make train`
-	├── README.md              <- The top-level README for developers using this project
+	├── Makefile                  <- Makefile with commands like `make data` or `make train`
+	├── README.md                 <- The top-level README for developers using this project
 	│
 	├── conf
 	│   ├── data
-	│   |   └── data.yaml      <- Data configuration
-	│   |
+	│   │   └── data.yaml         <- Data configuration
+	│   │
 	│   ├── features
-	│   |   └── features.yaml  <- Features configuration
+	│   │   └── features.yaml     <- Features configuration
 	│   │
 	│   ├── model
-	│   |   └── model.yaml     <- Model configuration
+	│   │   └── model.yaml        <- Model configuration
 	│   │
-	│   └── pipeline.yaml       <- Pipline configuration
+	│   ├── transformer
+	│   │   └── transformer.yaml  <- Transformer configuration
+	│   │
+	│   └── pipeline.yaml         <- Pipline configuration
 	│
 	├── data
-	│   └── raw                <- The original, immutable data dump
+	│   └── raw                   <- The original, immutable data dump
 	│
-	├── docs                   <- A default Sphinx project; see sphinx-doc.org for details
+	├── docs                      <- A default Sphinx project; see sphinx-doc.org for details
 	│
 	├── models
-	│   ├── logreg.pkl         <- Logistic regression model
-	│   └── ranfor.pkl         <- Random forest model
+	│   ├── logreg.pkl            <- Logistic regression model
+	│   └── ranfor.pkl            <- Random forest model
 	│
 	├── notebooks
-	│   └── EDA.ipynb          <- Exploratory data analisys (EDA)
+	│   └── EDA.ipynb             <- Exploratory data analisys (EDA)
 	│
 	├── reports
-	│   └── EDA-report.ipynb   <- EDA-report.html
+	│   └── EDA-report.ipynb      <- EDA-report.html
 	│
-	├── requirements.txt       <- The requirements file for reproducing the analysis environment
+	├── requirements.txt          <- The requirements file for reproducing the analysis environment
 	│
-	├── setup.py               <- Make this project pip installable with `pip install -e`
-	|
-	├── src                    <- Source code for use in this project
-	│   ├── __init__.py        <- Makes src a Python module
-	│   ├── data               <- Scripts to download or generate data
-	│   │   └── utils.py
-	│   │
-	│   ├── entities           <- Entities classes.
-	│   │   ├── data_params.py
-	│   │   ├── feature_params.py
-	│   │   ├── model_params.py
-	│   │   └── pipline_params.py
-	│   │
-	│   ├── features           <- Scripts to turn raw data into features for modeling
-	│   │   └── build_features.py
-	│   │
-	│   ├── models             <- Scripts to train models and then use trained models to make predictions
-	│   │   ├── predict_model.py
-	│   │   └── train_model.py
-	│   │
-	│   ├── train_model.py     <- Scripts to make train pipline
-	│   └── predict_model.py   <- Scripts to make prediction pipline
+	├── setup.py                  <- Make this project pip installable with `pip install -e`
 	│
-	├── tests                  <- Pytest scripts
-	│   ├── test_data_utils.py
-	│   ├── test_build_features.py
-	│   ├── test_train_model.py
-	│   ├── test_predict_model.py
-	│   ├── test_train_pipline.py
-	│   └── test_predict_pipline.py
+	├── tox.ini                   <- tox file with settings for running tox; see tox.readthedocs.io
 	│
-	│
-	└── tox.ini                <- tox file with settings for running tox; see tox.readthedocs.io
+	└── ml_pipeline               <- package directory
+        ├── src                   <- Source code for use in this project
+        │   ├── __init__.py       <- Makes src a Python module
+        │   ├── data              <- Scripts to download or generate data
+        │   │   └── utils.py
+        │   │
+        │   ├── entities          <- Entities classes.
+        │   │   ├── data_params.py
+        │   │   ├── feature_params.py
+        │   │   ├── model_params.py
+        │   │   ├── transformer_params.py
+        │   │   └── pipline_params.py
+        │   │
+        │   ├── features          <- Scripts to turn raw data into features for modeling
+        │   │   └── build_features.py
+        │   │
+        │   ├── models            <- Scripts to train models and then use trained models to make predictions
+        │   │   ├── predict_model.py
+        │   │   └── train_model.py
+        │   │
+        │   ├── train_model.py    <- Scripts to make train pipline
+        │   └── predict_model.py  <- Scripts to make prediction pipline
+        │
+        ├── tests                 <- Pytest scripts
+        │   ├── test_data_utils.py
+        │   ├── test_build_features.py
+        │   ├── test_train_model.py
+        │   ├── test_predict_model.py
+        │   ├── test_train_pipline.py
+        │   └── test_predict_pipline.py
+    	│
+        └── run_pipeline.py       <- Script to run pipeline
 
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>

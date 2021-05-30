@@ -5,10 +5,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.utils.validation import check_is_fitted
 
-from src.models.train_model import train_model
-from src.models.predict_model import make_preds, eval_model
-from src.entities.model_params import ModelParams
-from src.entities.pipeline_params import PipelineParams
+from ..src.models.train_model import train_model
+from ..src.models.predict_model import make_preds, eval_model
+from ..src.entities.model_params import ModelParams
+from ..src.entities.pipeline_params import PipelineParams
 
 
 def test_logistic_regression_preds(

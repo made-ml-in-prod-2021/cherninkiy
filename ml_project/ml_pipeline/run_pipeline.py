@@ -4,11 +4,11 @@ from os import path
 from typing import NoReturn
 from hydra.experimental import compose, initialize
 
-from src.entities.pipeline_params import PipelineParams
-from src.train_pipeline import train_pipeline
-from src.predict_pipeline import predict_pipeline
+from ml_pipeline.src.entities.pipeline_params import PipelineParams
+from ml_pipeline.src.train_pipeline import train_pipeline
+from ml_pipeline.src.predict_pipeline import predict_pipeline
 
-logger = logging.getLogger("main")
+logger = logging.getLogger("ml-pipeline")
 
 
 def load_conf(conf_path: str) -> PipelineParams:

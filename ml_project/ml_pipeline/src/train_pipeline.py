@@ -3,16 +3,16 @@ import logging
 import joblib
 import hydra
 
-from src.data.utils import read_dataset, split_dataset
-from src.features.build_features import FeatureBuilder, TargetBuilder
-from src.models.train_model import train_model
-from src.models.predict_model import make_preds, eval_model
-from src.entities.pipeline_params import PipelineParams
+from .data.utils import read_dataset, split_dataset
+from .features.build_features import FeatureBuilder, TargetBuilder
+from .models.train_model import train_model
+from .models.predict_model import make_preds, eval_model
+from .entities.pipeline_params import PipelineParams
 
 logger = logging.getLogger("ml_project/train_pipeline")
 
 
-@hydra.main(config_path="../conf", config_name="pipeline")
+@hydra.main(config_path="../../conf", config_name="pipeline")
 def train_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
 
     logger.info(f"Train pipeline {pipeline_params.model}")
@@ -49,6 +49,11 @@ def train_pipeline(pipeline_params: PipelineParams) -> Dict[str, float]:
     joblib.dump(model, pipeline_params.model.path)
 
     logger.info(f"Model saved into {pipeline_params.model.path}")
+
+    transformer_path = pipeline_params.transformer.path
+    joblib.dump(feature_builder, transformer_path)
+
+    logger.info(f"Transformer saved into {transformer_path}")
 
     return metrics
 

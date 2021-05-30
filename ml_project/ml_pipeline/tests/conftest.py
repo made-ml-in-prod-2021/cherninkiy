@@ -1,16 +1,16 @@
 import pytest
 import numpy as np
 import pandas as pd
-from typing import NoReturn, Tuple
+from typing import Tuple
 from omegaconf import OmegaConf
 from hydra.experimental import compose, initialize
 
-from src.data.utils import read_dataset, split_dataset
-from src.features.build_features import FeatureBuilder, TargetBuilder
+from ..src.data.utils import read_dataset, split_dataset
+from ..src.features.build_features import FeatureBuilder, TargetBuilder
 
 
 def load_conf() -> OmegaConf:
-    with initialize(config_path="../tests"):
+    with initialize(config_path=""):
         conf = compose(config_name="conftest")
     return conf
 
@@ -79,7 +79,7 @@ def test_data() -> Tuple[np.array, np.array]:
 
 @pytest.fixture(scope="session")
 def pipeline_params() -> OmegaConf:
-    with initialize(config_path="../tests"):
+    with initialize(config_path=""):
         conf = compose(config_name="pipeline")
     return conf
 

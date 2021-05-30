@@ -1,5 +1,6 @@
+# @package _global_
 defaults:
   - data: data
   - features: features
   - model: logreg
- 
+  - transformer: transformer

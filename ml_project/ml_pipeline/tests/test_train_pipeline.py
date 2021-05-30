@@ -1,8 +1,8 @@
 import os
 from typing import NoReturn
-from src.train_pipeline import train_pipeline
 
-from src.entities.pipeline_params import PipelineParams
+from ..src.train_pipeline import train_pipeline
+from ..src.entities.pipeline_params import PipelineParams
 
 
 def test_train_pipeline(pipeline_params: PipelineParams) -> NoReturn:

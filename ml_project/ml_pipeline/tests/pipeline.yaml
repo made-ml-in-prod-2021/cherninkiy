@@ -24,3 +24,5 @@ model:
   path: models/logreg.pkl
   kwargs:
     max_iter: 1000
+transformer:
+  path: models/transformer.pkl

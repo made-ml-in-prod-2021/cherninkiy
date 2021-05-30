@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.exceptions import NotFittedError
 
-from src.entities.feature_params import FeatureParams
+from ..entities.feature_params import FeatureParams
 
 logger = logging.getLogger("ml_project/train_pipeline")
 

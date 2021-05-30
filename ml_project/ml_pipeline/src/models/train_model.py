@@ -4,7 +4,7 @@ from typing import Union
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
-from src.entities.model_params import ModelParams
+from ..entities.model_params import ModelParams
 
 ClassifierModel = Union[LogisticRegression, RandomForestClassifier]
 logger = logging.getLogger("ml_project/train_pipeline")
