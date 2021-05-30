@@ -2,7 +2,7 @@ import click
 import logging
 from os import path
 from typing import NoReturn
-from hydra.experimental import compose, initialize
+from hydra.experimental import compose, initialize_config_dir
 
 from ml_pipeline.src.entities.pipeline_params import PipelineParams
 from ml_pipeline.src.train_pipeline import train_pipeline
@@ -14,7 +14,7 @@ logger = logging.getLogger("ml-pipeline")
 def load_conf(conf_path: str) -> PipelineParams:
     conf_dir, conf_name = path.split(conf_path)
     conf_name = ".".join(conf_name.split('.')[:-1])
-    with initialize(config_path=conf_dir):
+    with initialize_config_dir(config_dir=conf_dir):
         params = compose(config_name=conf_name)
     return params
 
