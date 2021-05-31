@@ -16,4 +16,3 @@ numerical_feats:
 - oldpeak
 - ca
 normalize_numerical: True
-transformer_path: ../../../models/transformer.pkl

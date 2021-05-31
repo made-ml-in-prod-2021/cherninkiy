@@ -1,5 +1,5 @@
 # @package _group_
 model: LogisticRegression
-path: ../../../models/logreg.pkl
+path: models/logreg.pkl
 kwargs:
   max_iter: 1000

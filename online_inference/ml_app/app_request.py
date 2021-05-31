@@ -3,8 +3,8 @@ import json
 import requests
 import pandas as pd
 
-DATA_PATH = "data/test.csv"
-PREDICTOR_HOST = os.environ.get("HOST", default="172.17.0.2")
+DATA_PATH = os.environ.get("DATA_PATH", "data/test.csv")
+PREDICTOR_HOST = os.environ.get("HOST", default="localhost")
 PREDICTOR_PORT = os.environ.get("PORT", default=8080)
 
 

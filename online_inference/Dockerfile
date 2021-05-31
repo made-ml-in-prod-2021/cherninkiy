@@ -1,13 +1,17 @@
 FROM python:3.9.5-slim
 
-COPY requirements.txt ./requirements.txt
-RUN pip install -r requirements.txt
+ENV VIRTUAL_ENV "/venv"
+ENV PATH "$VIRTUAL_ENV/bin:$PATH"
 
-COPY src /src
-COPY conf /conf
-COPY models /models
-COPY app.py /app.py
+RUN apt update
+RUN apt install -y git make
+RUN python -m venv $VIRTUAL_ENV
 
-WORKDIR .
+RUN mkdir -p /srv/ml_pipeline
+COPY ./ /srv/ml_pipeline/
+WORKDIR /srv/ml_pipeline
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+RUN make requirements
+RUN python setup.py install
+
+CMD ["uvicorn", "ml_app.app:app", "--host", "0.0.0.0", "--port", "8080"]

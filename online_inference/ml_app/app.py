@@ -5,9 +5,9 @@ import uvicorn
 import pandas as pd
 from typing import Optional, List, NoReturn
 from sklearn.pipeline import Pipeline
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 
-from src.entities.app_params import RequestData, ResponseData
+from .src.entities.app_params import RequestData, ResponseData
 
 
 PREDICTOR_HOST = os.environ.get("HOST", default="0.0.0.0")
@@ -105,4 +105,4 @@ def predict(request: List[RequestData]):
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host=PREDICTOR_HOST, port=os.getenv("PORT", PREDICTOR_PORT))
+    uvicorn.run("ml_app.app:app", host=PREDICTOR_HOST, port=os.getenv("PORT", PREDICTOR_PORT))

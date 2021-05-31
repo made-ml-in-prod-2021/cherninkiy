@@ -1,8 +1,14 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="pytest in tests" type="tests" factoryName="py.test" nameIsGenerated="true">
+  <configuration default="false" name="app-request" type="PythonConfigurationType" factoryName="Python">
     <module name="online_inference" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
+    <envs>
+      <env name="PYTHONUNBUFFERED" value="1" />
+      <env name="DATA_PATH" value="data/test.csv" />
+      <env name="HOST" value="localhost" />
+      <env name="PORT" value="8080" />
+    </envs>
     <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/ml-in-prod/bin/python" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="IS_MODULE_SDK" value="false" />
@@ -16,14 +22,15 @@
       <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
       <ENTRIES>
         <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        <ENTRY IS_ENABLED="true" PARSER="env" PATH=".env" />
       </ENTRIES>
     </EXTENSION>
-    <option name="_new_keywords" value="&quot;&quot;" />
-    <option name="_new_parameters" value="&quot;&quot;" />
-    <option name="_new_additionalArguments" value="&quot;&quot;" />
-    <option name="_new_target" value="&quot;$PROJECT_DIR$/ml_app/tests&quot;" />
-    <option name="_new_targetType" value="&quot;PATH&quot;" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ml_app/app_request.py" />
+    <option name="PARAMETERS" value="" />
+    <option name="SHOW_COMMAND_LINE" value="false" />
+    <option name="EMULATE_TERMINAL" value="false" />
+    <option name="MODULE_MODE" value="false" />
+    <option name="REDIRECT_INPUT" value="false" />
+    <option name="INPUT_FILE" value="" />
     <method v="2" />
   </configuration>
 </component>
