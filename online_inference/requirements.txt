@@ -10,5 +10,5 @@ omegaconf==2.0.6
 fastapi==0.63
 scikit_learn==0.24.2
 dataclasses==0.6
-git+https://github.com/made-ml-in-prod-2021/cherninkiy.git@homework1#subdirectory=ml_project&egg=ml-pipeline
+git+https://github.com/made-ml-in-prod-2021/cherninkiy.git#subdirectory=ml_project&egg=ml-pipeline
 
