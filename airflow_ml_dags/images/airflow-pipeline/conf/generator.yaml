@@ -1,0 +1,13 @@
+logreg:
+  model: LogisticRegression
+  path: models/logreg.pkl
+  kwargs:
+    max_iter: 1000
+ranfor:
+  model: RandomForestClassifier
+  path: models/ranfor.pkl
+  kwargs: {}
+generator:
+  model_name: "ranfor"
+  batch_size: 1000
+  random_state: 42
