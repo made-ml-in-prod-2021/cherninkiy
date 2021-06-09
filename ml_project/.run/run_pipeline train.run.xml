@@ -22,7 +22,7 @@
       </ENTRIES>
     </EXTENSION>
     <option name="SCRIPT_NAME" value="ml_pipeline/run_pipeline.py" />
-    <option name="PARAMETERS" value="train ../conf/pipeline.yml" />
+    <option name="PARAMETERS" value="train $PROJECT_DIR$/conf/pipeline.yml" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />

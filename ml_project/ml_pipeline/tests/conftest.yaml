@@ -29,5 +29,6 @@ ranfor:
   path: models/ranfor.pkl
   kwargs: {}
 synthetic:
+  used_model: ranfor
   batch_size: 32
   random_state: 42

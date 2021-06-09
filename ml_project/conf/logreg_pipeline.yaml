@@ -2,5 +2,5 @@
 defaults:
   - data: data
   - features: features
-  - model: ranfor
+  - model: logreg
   - transformer: transformer
