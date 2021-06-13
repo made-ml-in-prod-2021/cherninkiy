@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from typing import Tuple
 from omegaconf import OmegaConf
-from hydra.experimental import compose, initialize
+from hydra import compose, initialize
 
 from ..src.data.utils import read_dataset, split_dataset
 from ..src.features.build_features import FeatureBuilder, TargetBuilder

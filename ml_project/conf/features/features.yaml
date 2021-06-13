@@ -1,4 +1,3 @@
-# @package _group_
 target_col: target
 categorical_feats:
 - sex

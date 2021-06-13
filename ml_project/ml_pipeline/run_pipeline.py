@@ -2,7 +2,7 @@ import click
 import logging
 from os import path
 from typing import NoReturn
-from hydra.experimental import compose, initialize_config_dir
+from hydra import compose, initialize_config_dir
 
 from ml_pipeline.src.entities.pipeline_params import PipelineParams
 from ml_pipeline.src.train_pipeline import train_pipeline
