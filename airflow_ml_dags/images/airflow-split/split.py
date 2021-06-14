@@ -20,10 +20,10 @@ def split_train_test_data(data_path: str, train_size: float, random_state: int):
 
     train, test = split_dataset(df, train_size, random_state)
 
-    train.to_csv(f"{data_path}/train.csv", index=False, mode='a')
+    train.to_csv(f"{data_path}/train.csv", index=False)
     logger.info(f"Train dataset saved to {data_path}/train.csv")
 
-    test.to_csv(f"{data_path}/test.csv", index=False, mode='a')
+    test.to_csv(f"{data_path}/test.csv", index=False)
     logger.info(f"Train dataset saved to {data_path}/test.csv")
 
     logger.info("Splitting data successed")

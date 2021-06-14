@@ -4,6 +4,7 @@ from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
 from airflow.sensors.filesystem import FileSensor
+from airflow.models.baseoperator import chain
 from airflow.sensors.python import PythonSensor
 import os
 
@@ -32,7 +33,8 @@ with DAG(
     wait_data = PythonSensor(
         task_id="wait_data",
         python_callable=_wait_for_file,
-        op_kwargs={'path':'/data/raw/{{ ds }}/data.csv'},
+        op_kwargs={'path':'/opt/airflow/data/raw/{{ ds }}/data.csv'},
+        timeout=10,
         poke_interval=10,
         retries=2,
         mode="poke",
@@ -41,7 +43,8 @@ with DAG(
     wait_target = PythonSensor(
         task_id="wait_target",
         python_callable=_wait_for_file,
-        op_kwargs={'path':'/data/raw/{{ ds }}/target.csv'},
+        op_kwargs={'path':'/opt/airflow/data/raw/{{ ds }}/target.csv'},
+        timeout=10,
         poke_interval=10,
         retries=2,
         mode="poke",
@@ -65,7 +68,7 @@ with DAG(
 
     train = DockerOperator(
         image="airflow-train",
-        command="--data_path /data/processed/{{ ds }} --model_type LogisticRegression --output_model_path /data/models/{{ ds }}",
+        command="--data-path /data/processed/{{ ds }} --model-name RandomForestClassifier --model-path /data/models/{{ ds }}/flow_model.pkl",
         task_id="train_pipeline",
         do_xcom_push=False,
         volumes=["/home/dm/MADE-22/ml-in-prod/cherninkiy/airflow_ml_dags/data:/data"]
@@ -73,10 +76,10 @@ with DAG(
 
     validate = DockerOperator(
         image="airflow-validate",
-        command="--data_path /data/processed/{{ ds }} --model_path /data/models/{{ ds }}",
+        command="--data-path /data/processed/{{ ds }} --model-path /data/models/{{ ds }}/flow_model.pkl",
         task_id="validate_pipeline",
         do_xcom_push=False,
         volumes=["/home/dm/MADE-22/ml-in-prod/cherninkiy/airflow_ml_dags/data:/data"]
     )
 
-    [wait_data, wait_target] >> preprocess >> split >> train >> validate
+    wait_data >> wait_target >> preprocess >> split >> train >> validate

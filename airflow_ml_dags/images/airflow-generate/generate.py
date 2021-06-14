@@ -37,10 +37,10 @@ def generate_data(
 
     os.makedirs(output_path, exist_ok=True)
 
-    X.to_csv(f"{output_path}/data.csv", index=False, mode='a')
+    X.to_csv(f"{output_path}/data.csv", index=False)
     logger.info(f"Features saved to {output_path}/data.csv")
 
-    y.to_csv(f"{output_path}/target.csv", index=False, mode='a')
+    y.to_csv(f"{output_path}/target.csv", index=False)
     logger.info(f"Target saved to {output_path}/target.csv")
 
 

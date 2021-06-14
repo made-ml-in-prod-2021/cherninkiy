@@ -1,9 +1,5 @@
 FROM airflow-ml-base:latest
 
-COPY fit.py /fit.py
-COPY train_config.yaml /train_config.yaml
-COPY requirements.txt /requirements.txt
+COPY train.py /train.py
 
-RUN pip install -r /requirements.txt
-
-ENTRYPOINT ["python", "fit.py"]
+ENTRYPOINT ["python", "train.py"]

@@ -22,7 +22,7 @@ def preprocess(input_dir: str, output_dir: str):
     df["target"] = target_df["target"]
 
     os.makedirs(output_dir, exist_ok=True)
-    df.to_csv(f"{output_dir}/data.csv", index=False, mode='a')
+    df.to_csv(f"{output_dir}/data.csv", index=False)
     logger.info(f"Train dataset saved to {output_dir}/data.csv")
 
     logger.info("Preprocessing data successed")

@@ -27,11 +27,11 @@ with DAG(
         schedule_interval="@daily",
         start_date=days_ago(5)
 ) as dag:
-    wait = PythonSensor(
+    wait_data = PythonSensor(
         task_id="wait_for_data",
         python_callable=_wait_for_file,
-        op_kwargs={'path':'/opt/airflow/data/raw/{{ ds }}/data.csv'},
-        timeout=6000,
+        op_kwargs={'path':'/opt/airflow/data/processed/{{ ds }}/data.csv'},
+        timeout=10,
         poke_interval=10,
         retries=100,
         mode="poke",
@@ -39,10 +39,10 @@ with DAG(
 
     predict = DockerOperator(
         image="airflow-predict",
-        command="--data_path /data/processed/{{ ds }} --model_path /data/models/{{ ds }} --output_path /data/predictions/{{ds }}",
+        command="--data-path /data/processed/{{ ds }}/data.csv --model-path /data/models/{{ ds }}/flow_model.pkl --output-path /data/predictions/{{ ds }}",
         task_id="make_preds",
         do_xcom_push=False,
         volumes=["/home/dm/MADE-22/ml-in-prod/cherninkiy/airflow_ml_dags/data:/data"]
     )
 
-    wait >> predict
+    wait_data >> predict

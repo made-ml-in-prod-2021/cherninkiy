@@ -20,7 +20,7 @@ with DAG(
 ) as dag:
     generate = DockerOperator(
         image="airflow-generate",
-        command="--output-path /data/raw/{{ ds }} --model-path /data/models/ranfor.pkl",
+        command="--output-path /opt/airflow/data/raw/{{ ds }} --model-path /data/models/ranfor.pkl",
         network_mode="bridge",
         task_id="generate_data",
         do_xcom_push=False,
