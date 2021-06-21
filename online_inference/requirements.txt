@@ -6,7 +6,7 @@ click==8.0.1
 pytest==6.2.4
 hydra_core==1.1.0
 omegaconf==2.1.0
-dataclasses==0.8
+dataclasses==0.6
 uvicorn==0.14.0
 requests==2.25.1
 pydantic==1.8.2
