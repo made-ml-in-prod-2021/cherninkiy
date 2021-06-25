@@ -21,6 +21,7 @@ def make_request():
     print("Predictor response:")
     print(f"Status code: {response.status_code}")
     resp = response.json()
+
     if resp is not None:
         print(list(f | t for (f, t) in zip(data, resp)))
 

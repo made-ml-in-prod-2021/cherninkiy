@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: online-inference
+  labels:
+    app: online-inference
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: online-inference
+  template:
+    metadata:
+      labels:
+        app: online-inference
+    spec:
+      containers:
+        - name: online-inference
+          image: cherninkiy/made-ml-in-prod-2021-v3:latest
+          ports:
+            - containerPort: 8008
