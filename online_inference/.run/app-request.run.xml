@@ -9,7 +9,7 @@
       <env name="HOST" value="localhost" />
       <env name="PORT" value="8080" />
     </envs>
-    <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/ml-in-prod/bin/python" />
+    <option name="SDK_HOME" value="$USER_HOME$/Miniconda3/envs/ml-airflow/bin/python3" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
